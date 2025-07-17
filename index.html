@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Game</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      text-align: center;
+      padding-top: 15%;
+      color: #fff;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      font-size: 1.2rem;
+      margin: 10px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 25px;
+      background-color: #fff;
+      color: #ff3366;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #ff3366;
+      color: #fff;
+    }
+
+    .love-message {
+      display: none;
+      font-size: 1.5rem;
+      margin-top: 30px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="question">Do you love Jay?</h1>
+  <button class="btn" onclick="yesClicked()">Yes 💖</button>
+  <button class="btn" id="noBtn" onclick="noClicked()">No 💔</button>
+
+  <div class="love-message" id="message">
+    Hearing you say yes feels like the most beautiful moment I’ve ever known.  
+    I promise to cherish you and every moment we share from here on.  
+    I can’t wait to begin this journey together.
+  </div>
+
+  <script>
+    let noClickCount = 0;
+    const noBtn = document.getElementById('noBtn');
+    const question = document.getElementById('question');
+    const message = document.getElementById('message');
+
+    function yesClicked() {
+      question.style.display = 'none';
+      noBtn.style.display = 'none';
+      event.target.style.display = 'none';
+      message.style.display = 'block';
+    }
+
+    function noClicked() {
+      noClickCount++;
+      if (noClickCount === 1) {
+        alert("WRONG ANSWER, TRY AGAIN");
+      } else {
+        const x = Math.floor(Math.random() * window.innerWidth);
+        const y = Math.floor(Math.random() * window.innerHeight);
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = `${x}px`;
+        noBtn.style.top = `${y}px`;
+      }
+    }
+  </script>
+</body>
+</html>
